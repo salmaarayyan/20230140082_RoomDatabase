@@ -32,7 +32,6 @@ class EntryViewModel(private val repositoriSiswa: RepositoriSiswa): ViewModel() 
 /**
  * mewakili status UI saat ini
  */
-
 data class UIStateSiswa(
     val detailSiswa: DetailSiswa = DetailSiswa(),
     val isEntryValid: Boolean = false
@@ -48,8 +47,6 @@ data class DetailSiswa(
 /**
  * Fungsi untuk mengkonversi data input ke data dalam tabel sesuai jenis datanya
  */
-
-
 fun DetailSiswa.toSiswa(): Siswa = Siswa(
     id = id,
     nama = nama,
