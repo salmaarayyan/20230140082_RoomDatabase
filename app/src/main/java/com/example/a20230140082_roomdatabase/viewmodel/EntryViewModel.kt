@@ -1,6 +1,5 @@
 package com.example.a20230140082_roomdatabase.viewmodel
 
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.example.a20230140082_roomdatabase.repositori.RepositoriSiswa
@@ -11,5 +10,10 @@ class EntryViewModel(private val repositoriSiswa: RepositoriSiswa): ViewModel() 
     private fun validasiInput(uiState: DetailSiswa = uiStateSiswa.detailSiswa): Boolean{
         return with(uiState){
             nama.isNotBlank() && alamat.isNotBlank() && telpon.isNotBlank()
-    })
+    }
+
+        fun updateUiState(detailSiswa: DetailSiswa){
+            uiStateSiswa =
+                UIStateSiswa(detailSiswa = detailSiswa, isEntryValid = validasiInput(detailSiswa))
+        }
 }
