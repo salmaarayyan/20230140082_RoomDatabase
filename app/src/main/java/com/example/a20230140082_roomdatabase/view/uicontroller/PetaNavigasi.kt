@@ -10,10 +10,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.a20230140082_roomdatabase.view.DetailSiswaScreen
+import com.example.a20230140082_roomdatabase.view.EditSiswaScreen
 import com.example.a20230140082_roomdatabase.view.EntrySiswaScreen
 import com.example.a20230140082_roomdatabase.view.HomeScreen
 import com.example.a20230140082_roomdatabase.view.route.DestinasiDetailSiswa
 import com.example.a20230140082_roomdatabase.view.route.DestinasiDetailSiswa.itemIdArg
+import com.example.a20230140082_roomdatabase.view.route.DestinasiEditSiswa
 import com.example.a20230140082_roomdatabase.view.route.DestinasiEntry
 import com.example.a20230140082_roomdatabase.view.route.DestinasiHome
 
@@ -49,8 +51,15 @@ fun HostNavigasi(
         })
         ){
             DetailSiswaScreen(
-                //navigateToEditItem = { navController.navigate("${DestinasiEditSiswa.route}/$it") },
+                navigateToEditItem = { navController.navigate("${DestinasiEditSiswa.route}/$it") },
                 navigateBack = { navController.navigateUp() })
+        }
+        composable(route = DestinasiEditSiswa.routeWithArgs, arguments = listOf(navArgument(itemIdArg) {
+            type = NavType.IntType
+        })){
+            EditSiswaScreen(
+                navigateBack = {navController.popBackStack()},
+                onNavigateUp = {navController.navigateUp()})
         }
     }
 }
